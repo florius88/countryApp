@@ -28,4 +28,28 @@ export class CountriesService {
             );
     }
 
+    searchCountry(term: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/name/${term}`;
+        return this.http.get<Country[]>(url)
+            .pipe(
+                catchError(error => of([]))
+            );
+    }
+
+    searchRegion(term: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/region/${term}`;
+        return this.http.get<Country[]>(url)
+            .pipe(
+                catchError(error => of([]))
+            );
+    }
+
+    searchCountryByAlphaCode(code: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/alpha/${code}`;
+        return this.http.get<Country[]>(url)
+            .pipe(
+                catchError(error => of([]))
+            );
+    }
+
 }
